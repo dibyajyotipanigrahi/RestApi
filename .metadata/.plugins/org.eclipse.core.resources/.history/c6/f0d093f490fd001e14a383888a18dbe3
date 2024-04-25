@@ -1,0 +1,43 @@
+package MakeMyTripController;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import EntityBinding.Passenger;
+import EntityBinding.Ticket;
+import MakeMyTripService.MakeMyTripService;
+import reactor.core.publisher.Mono;
+
+@Controller
+public class MakeMyTripController {
+
+	@Autowired
+	private MakeMyTripService service;
+
+	@GetMapping("/")
+	public String loadPassenger(Model model) {
+		model.addAttribute("Passenger", new Passenger());
+
+		return "index.html";
+
+	}
+
+	@PostMapping("/bookTicket")
+	public String bookTicket(Passenger p, Model model) {
+		Mono<Ticket> bookTicket = service.bookTicket(p);
+		model.addAttribute("Ticket", bookTicket);
+		return "index.html";
+
+	}
+	
+	public String getTicket(Model model) {
+		Mono<Ticket[]> allTickets = service.getAllTickets();
+		model.addAttribute("Ticket", allTickets)
+		
+		return "retrive.html";
+		
+	}
+}

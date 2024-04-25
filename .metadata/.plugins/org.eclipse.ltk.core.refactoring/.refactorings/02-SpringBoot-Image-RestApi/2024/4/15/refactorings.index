@@ -1,0 +1,4 @@
+1712921896547	Rename type 'imageRepository'
+1712921915273	Rename type 'imageEntity'
+1712922767093	Extract local variable 'imageEntity'
+1712935046534	Extract local variable 'byId'

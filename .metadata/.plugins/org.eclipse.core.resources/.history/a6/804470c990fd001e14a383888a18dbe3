@@ -1,0 +1,23 @@
+package MakeMyTripController;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
+import EntityBinding.Passenger;
+import MakeMyTripService.MakeMyTripService;
+
+@Controller
+public class MakeMyTripController {
+
+	@Autowired
+	private MakeMyTripService service;
+	
+	public String bookTicket(Passenger p,Model model) {
+		
+		
+		
+		return null;
+		
+	}
+}
